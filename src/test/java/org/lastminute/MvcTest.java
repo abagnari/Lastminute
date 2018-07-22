@@ -1,6 +1,5 @@
 package org.lastminute;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
@@ -65,43 +63,5 @@ public class MvcTest {
 		mockMvc.perform(MockMvcRequestBuilders.get("/1"))
 				.andExpect(status().isOk())
 				.andExpect(model().attribute("cart", testCart));
-	}
-
-	@Test
-	public void htmlPageTest() throws Exception
-	{
-		String expected = "<!DOCTYPE HTML>\r\n" +
-				"<html>\r\n" +
-				"<head>\r\n" +
-				"    <title>Lastminute cart result</title>\r\n" +
-				"    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\r\n" +
-				"</head>\r\n" +
-				"<body>\r\n" +
-				"<div>\r\n" +
-				"    <p >Output 1</p>\r\n" +
-				"    <table>\r\n" +
-				"        <tr>\r\n" +
-				"            <td>1</td>\r\n" +
-				"            <td>imported box of chocolates</td>\r\n" +
-				"            <td>10.50</td>\r\n" +
-				"        </tr>\r\n" +
-				"        <tr>\r\n" +
-				"            <td>1</td>\r\n" +
-				"            <td>imported bottle of perfume</td>\r\n" +
-				"            <td>54.65</td>\r\n" +
-				"        </tr>\r\n" +
-				"    </table>\r\n" +
-				"    <p >Sales Taxes: 7.65</p>\r\n" +
-				"    <p >Total: 65.15</p>\r\n" +
-				"</div>\r\n" +
-				"\r\n" +
-				"</body>\r\n" +
-				"</html>";
-
-		MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/1"))
-				.andExpect(status().isOk())
-				.andReturn();
-
-		Assert.assertEquals(expected, result.getResponse().getContentAsString());
 	}
 }
