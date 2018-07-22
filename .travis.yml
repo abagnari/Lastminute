@@ -1,13 +1,4 @@
 language: java
-#jdk: oraclejdk10
-# Download jdk installer
-before_install:
-  - wget https://github.com/sormuras/bach/raw/master/install-jdk.sh
-
-# Temporary solutions to install openJDK 10
-matrix:
-  include:
-      - env: JDK='OpenJDK 10'
-install: . ./install-jdk.sh -F 10 -L GPL
+jdk: oraclejdk8
 sudo: false
 script: mvn clean verify
