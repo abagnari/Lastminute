@@ -60,4 +60,25 @@ public class Cart
 	{
 		this.total = total;
 	}
+
+	@Override
+	public boolean equals(Object o)
+	{
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+
+		Cart cart = (Cart) o;
+
+		boolean mapsEqual = cart.items.keySet().size() == this.items.keySet().size() &&
+				cart.items.keySet().containsAll(this.items.keySet());
+
+		return Objects.equals(id, cart.id) &&
+				mapsEqual &&
+				Objects.equals(totalTaxes, cart.totalTaxes) &&
+				Objects.equals(total, cart.total);
+	}
 }
