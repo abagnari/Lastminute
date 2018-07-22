@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lastminute cart result</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:if="${cart != null}">
+    <p th:text="'Output ' + ${cart.id}" />
+    <table>
+        <tr th:each="item : ${cart.items}">
+            <td th:text="${item.value}"/>
+            <td th:text="${item.key.name}"/>
+            <td th:text="${item.key.priceVatAdded}"/>
+        </tr>
+    </table>
+    <p th:text="'Sales Taxes: ' + ${cart.totalTaxes}" />
+    <p th:text="'Total: ' + ${cart.total}" />
+</div>
+<div th:unless="${cart != null}">
+    <div>
+        <p>Use localhost:8080/{id} for a basket total output.</p>
+        <p>Use localhost:8080/cart/{id} for JSON output.</p>
+        <p>Available IDs:</p>
+        <table>
+            <tr><td>0</td></tr>
+            <tr><td>1</td></tr>
+            <tr><td>2</td></tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

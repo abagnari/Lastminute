@@ -1,0 +1,10 @@
+id,name,price,itemType,imported
+0,book,12.49,BOOK,false
+1,music CD,14.99,OTHER,false
+2,chocolate bar,0.85,FOOD,false
+3,imported box of chocolates,10.00,FOOD,true
+4,imported bottle of perfume,47.50,OTHER,true
+5,imported bottle of perfume,27.99,OTHER,true
+6,bottle of perfume,18.99,OTHER,false
+7,packet of headache pills,9.75,MEDICAL,false
+8,box of imported chocolates,11.25,FOOD,true
