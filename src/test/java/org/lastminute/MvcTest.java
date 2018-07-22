@@ -30,18 +30,18 @@ public class MvcTest {
 	}
 
 	@Test
-	public void greeting() throws Exception
+	public void restControllerTest() throws Exception
 	{
-		mockMvc.perform(MockMvcRequestBuilders.get("/cart/"))
+		mockMvc.perform(MockMvcRequestBuilders.get("/cart/1"))
 				.andExpect(MockMvcResultMatchers.status().isOk())
-				.andExpect(MockMvcResultMatchers.content().string("Hello World!"));
+				.andExpect(MockMvcResultMatchers.content().json("{\"id\":1,\"items\":[{\"quantity\":1,\"name\":\"imported box of chocolates\",\"priceVatAdded\":10.50},{\"quantity\":1,\"name\":\"imported bottle of perfume\",\"priceVatAdded\":54.65}],\"totalTaxes\":7.65,\"total\":65.15}", true));
 	}
 
 	@Test
-	public void firstItem() throws Exception
+	public void htmlPageTest() throws Exception
 	{
-		mockMvc.perform(MockMvcRequestBuilders.get("/cart/item/0"))
+		mockMvc.perform(MockMvcRequestBuilders.get("/1"))
 				.andExpect(MockMvcResultMatchers.status().isOk())
-				.andExpect(MockMvcResultMatchers.content().json("{\"id\":0,\"name\":\"book\",\"price\":12.49,\"priceVatAdded\":null,\"itemType\":\"BOOK\"}", true));
+				.andExpect(MockMvcResultMatchers.model().attribute("cart", null));
 	}
 }
